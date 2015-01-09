@@ -62,7 +62,7 @@ public class Cadastra extends javax.swing.JFrame {
         txtcoment.setRows(5);
         jScrollPane1.setViewportView(txtcoment);
 
-        nota.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+        nota.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "1", "2", "3", "4", "5" }));
 
         jLabel6.setText("Gênero");
 
