@@ -11,11 +11,12 @@ package cadastrodelivros;
  */
 public class Cadastra extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Cadastra
-     */
+    Conexao c; // variavel
+    
     public Cadastra() {
         initComponents();
+        c = new Conexao();
+        c.open();
     }
 
     /**
@@ -47,6 +48,11 @@ public class Cadastra extends javax.swing.JFrame {
         setTitle("Cadastro");
         setBounds(new java.awt.Rectangle(400, 200, 0, 0));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                windowClose(evt);
+            }
+        });
 
         jLabel1.setText("Nome do Livro");
 
@@ -90,8 +96,7 @@ public class Cadastra extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -172,6 +177,10 @@ public class Cadastra extends javax.swing.JFrame {
         txtcoment.setText(null);
         nota.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void windowClose(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClose
+        c.close();
+    }//GEN-LAST:event_windowClose
 
     /**
      * @param args the command line arguments
