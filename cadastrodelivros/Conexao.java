@@ -10,7 +10,8 @@ public class Conexao {
     
     
     //funções de controle
-    public void open(){
+    public void open(){//classe de abertura
+        
         try{
             Class.forName("org.gjt.mm.mysql.Driver");//driver que inicia o mysql
             con = DriverManager.getConnection(url, user, password);//variavel con recebe as demais variaveis como parametro
@@ -21,17 +22,34 @@ public class Conexao {
         }catch(SQLException ex){//Se não tiver conecxao mostra a mensagem abaixo
             System.out.println(ex.getMessage());
         }
-        System.out.println("Executado com sucesso");
+        System.out.println("Executado com sucesso");   
+    }
     
+    public void close(){//classe de fechamento
         
+        try{
+            stat.close();
+            con.close();
+            
+        }catch (SQLException ex){//algum erro exibe a mensagem do driver necessario
+            System.out.println(ex.getMessage());  
+        }
+        System.out.println("Fechado");   
+    
     }
     
-    public void close(){
-    
-    
-    }
-    
-    public void execute(){
+    public void execute(String query){//classe de execução
+        
+        try{
+            if(stat.executeUpdate(query) != Statement.EXECUTE_FAILED){//vai atualizar os dados no banco
+            
+                System.out.println("Registro gravado com sucesso");
+        }
+        
+        
+        }catch(SQLException ex){//algum erro exibe a mensagem do driver necessario
+            System.out.println(ex.getMessage()); 
+        }
     
     
     }
