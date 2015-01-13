@@ -156,19 +156,27 @@ public class Cadastra extends javax.swing.JFrame {
     
     //botao cadastrar
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        txtnomelivro.setText(null);
+        txteditora.setText(null);
+        txtautor.setText(null);
+        txtgenero.setText(null);
+        txtcoment.setText(null);
+        nota.setSelectedIndex(0);
     }//GEN-LAST:event_jButton2ActionPerformed
         
     
     //função do botão limpar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        txtnomelivro.setText(null);
-        txtautor.setText(null);
-        txteditora.setText(null);
-        txtgenero.setText(null);
-        txtcoment.setText(null);
+        String nomelivro = txtnomelivro.getText();
+        String autor = txtautor.getText();
+        String editora = txteditora.getText();
+        String genero = txtgenero.getText();
+        String coment = txtcoment.getText();
         String snota = "";
         int Selecionado = nota.getSelectedIndex();
+        
+        insert into
+                
         switch(Selecionado){
             case 0://se escolher a posição 0 a variavel snota recebe 1
                 snota = "1";//
