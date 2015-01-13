@@ -156,17 +156,6 @@ public class Cadastra extends javax.swing.JFrame {
     
     //botao cadastrar
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        txtnomelivro.setText(null);
-        txteditora.setText(null);
-        txtautor.setText(null);
-        txtgenero.setText(null);
-        txtcoment.setText(null);
-        nota.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-        
-    
-    //função do botão limpar
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nomelivro = txtnomelivro.getText();
         String autor = txtautor.getText();
         String editora = txteditora.getText();
@@ -175,7 +164,11 @@ public class Cadastra extends javax.swing.JFrame {
         String snota = "";
         int Selecionado = nota.getSelectedIndex();
         
-        insert into
+        
+        //onde os valores serão inseridos no banco
+        String query = "INSERT INTO `teste` (NomeLivro, NomeAutor, NomeEditora, Genero, Comentarios, Nota)";
+        
+        
                 
         switch(Selecionado){
             case 0://se escolher a posição 0 a variavel snota recebe 1
@@ -198,14 +191,28 @@ public class Cadastra extends javax.swing.JFrame {
                 snota = "5";//
                 break;
         }
-        System.out.println(snota);
+        
+        //onde os dados serão capturados, os valores que serão cadastrados
+        query += "VALUES('"+nomelivro+"', '"+autor+"', '"+editora+"', '"+genero+"', '"+coment+"', "+snota+" )";
+        c.execute(query);
+    }//GEN-LAST:event_jButton2ActionPerformed
+        
+    
+    //função do botão limpar
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        txtnomelivro.setText(null);
+        txteditora.setText(null);
+        txtautor.setText(null);
+        txtgenero.setText(null);
+        txtcoment.setText(null);
+        nota.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void windowClose(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClose
         c.close();
     }//GEN-LAST:event_windowClose
 
-   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
